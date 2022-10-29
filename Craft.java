@@ -22,17 +22,11 @@ public class Craft {
 	}
 
 	public void move() {
-		if(mDy == -1) {
-			mDr = (mDr * -1);
-			mR = (mR + mDr) % 360;
-			mX += ((mDy) * Math.cos(Math.toRadians(mR)));
-			mY += ((mDy) * Math.sin(Math.toRadians(mR)));
-			mDr = (mDr * -1);
-		} else {
-			mR = (mR + mDr) % 360;
-			mX += ((mDy) * Math.cos(Math.toRadians(mR)));
-			mY += ((mDy) * Math.sin(Math.toRadians(mR)));
-		}
+
+		mR = (mR + (mDy < 0 ? -1 * mDr : mDr)) % 360;
+
+		mX += ((mDy) * Math.cos(Math.toRadians(mR)));
+		mY += ((mDy) * Math.sin(Math.toRadians(mR)));
 		
 		System.out.println("mx = " + mX + ", my = " + mY + ", mr = " + mR);
 	}
