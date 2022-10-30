@@ -42,7 +42,41 @@ public class Board extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		craft.move();
+		checkCollisions(false);
 		repaint();
+	}
+
+	private void checkCollisions(boolean scoobyDooLogic) {
+		if(scoobyDooLogic){
+			if(craft.getX() >= RType.GAME_WIDTH -30){
+				craft.setX(RType.GAME_WIDTH - 30);
+			}
+			else if(craft.getX() <= 0){
+				craft.setX(0);
+			}
+
+			if(craft.getY() <= 0){
+				craft.setY(0);
+			}
+			else if(craft.getY() > 500){
+				craft.setY(500 );
+			}
+		}
+		else{
+			if(craft.getX() >= RType.GAME_WIDTH -30){
+				craft.setX(0);
+			}
+			else if(craft.getX() <= 0){
+				craft.setX(RType.GAME_WIDTH - 30);
+			}
+
+			if(craft.getY() <= 0){
+				craft.setY(500);
+			}
+			else if(craft.getY() > 500){
+				craft.setY(0 );
+			}
+		}
 	}
 
 	private class TAdapter extends KeyAdapter {
