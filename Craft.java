@@ -27,16 +27,24 @@ public class Craft {
 
 		mX += ((mDy) * Math.cos(Math.toRadians(mR)));
 		mY += ((mDy) * Math.sin(Math.toRadians(mR)));
-		
-		System.out.println("mx = " + mX + ", my = " + mY + ", mr = " + mR);
+
+		// System.out.println("mx = " + mX + ", my = " + mY + ", mr = " + mR);
 	}
 
 	public double getX() {
 		return mX;
 	}
 
+	public void setX(double x) {
+		this.mX = x;
+	}
+
 	public double getY() {
 		return mY;
+	}
+
+	public void setY(double y){
+		this.mY = y;
 	}
 
 	public int getR() {
@@ -48,18 +56,15 @@ public class Craft {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		
+
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_UP) {
-			//mDx = Math.cos(Math.toRadians(mR));
-			//mDy = Math.sin(Math.toRadians(mR));
+
 			mDy = 1;
 		}
 
 		if (key == KeyEvent.VK_DOWN) {
-			//mDx = -Math.cos(Math.toRadians(mR));
-			//mDy = -Math.sin(Math.toRadians(mR));
 			mDy = -1;
 		}
 
