@@ -39,6 +39,14 @@ public class Craft {
 		return mY;
 	}
 
+	public void setX(double val) {
+		mX = val;
+	}
+
+	public void setY(double val) {
+		mY = val;
+	}
+
 	public int getR() {
 		return mR;
 	}
