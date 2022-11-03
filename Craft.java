@@ -1,20 +1,20 @@
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
+import java.io.Serializable;
 import java.awt.Image;
 
-public class Craft {
+public class Craft implements Serializable{
 	private String craft = "resources/craft.png";
 
-	private double mDx;
 	private double mDy;
 	private double mX;
 	private double mY;
 	private int mR;
 	private int mDr;
-	private Image mImage;
+	transient Image mImage;
+	transient ImageIcon ii = new ImageIcon(getClass().getResource(craft));
 
 	public Craft() {
-		ImageIcon ii = new ImageIcon(getClass().getResource(craft));
 		mImage = ii.getImage();
 		mX = 40;
 		mY = 60;
@@ -28,7 +28,7 @@ public class Craft {
 		mX += ((mDy) * Math.cos(Math.toRadians(mR)));
 		mY += ((mDy) * Math.sin(Math.toRadians(mR)));
 		
-		System.out.println("mx = " + mX + ", my = " + mY + ", mr = " + mR);
+		//System.out.println("mx = " + mX + ", my = " + mY + ", mr = " + mR);
 	}
 
 	public double getX() {
@@ -60,14 +60,11 @@ public class Craft {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_UP) {
-			//mDx = Math.cos(Math.toRadians(mR));
-			//mDy = Math.sin(Math.toRadians(mR));
 			mDy = 1;
+			System.out.println("up");
 		}
 
 		if (key == KeyEvent.VK_DOWN) {
-			//mDx = -Math.cos(Math.toRadians(mR));
-			//mDy = -Math.sin(Math.toRadians(mR));
 			mDy = -1;
 		}
 
@@ -87,7 +84,6 @@ public class Craft {
 			mDr = 0;
 		}
 		if ((key == KeyEvent.VK_UP) || (key == KeyEvent.VK_DOWN)) {
-			mDx = 0;
 			mDy = 0;
 		}
 	}
