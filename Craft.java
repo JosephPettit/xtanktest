@@ -1,8 +1,9 @@
 import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
+import java.awt.Rectangle;
 
-public class Craft {
+public class Craft extends Rectangle {
 	private String craft = "resources/craft.png";
 
 	private double mDx;
@@ -14,21 +15,49 @@ public class Craft {
 	private Image mImage;
 
 	public Craft() {
+
 		ImageIcon ii = new ImageIcon(getClass().getResource(craft));
 		mImage = ii.getImage();
 		mX = 40;
 		mY = 60;
 		mR = 0;
+		this.setSize(20, 20);
+	}
+
+	public Craft(int x, int y){
+		this.x = x; 
+		this.y = y;
+		// this.setSize(100, 100);
 	}
 
 	public void move() {
-
 		mR = (mR + (mDy < 0 ? -1 * mDr : mDr)) % 360;
-
 		mX += ((mDy) * Math.cos(Math.toRadians(mR)));
 		mY += ((mDy) * Math.sin(Math.toRadians(mR)));
+	}
 
-		// System.out.println("mx = " + mX + ", my = " + mY + ", mr = " + mR);
+	public void setmDx(double mDx) {
+		this.mDx = mDx;
+	}
+
+	public void setmDy(double mDy) {
+		this.mDy = mDy;
+	}
+
+	public void setmDr(int mDr) {
+		this.mDr = mDr;
+	}
+
+	public double getmDy() {
+		return mDy;
+	}
+
+	public int getmR() {
+		return mR;
+	}
+
+	public int getmDr() {
+		return mDr;
 	}
 
 	public double getX() {
@@ -43,7 +72,7 @@ public class Craft {
 		return mY;
 	}
 
-	public void setY(double y){
+	public void setY(double y) {
 		this.mY = y;
 	}
 
@@ -88,4 +117,12 @@ public class Craft {
 			mDy = 0;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Craft [craft=" + craft + ", mDx=" + mDx + ", mDy=" + mDy + ", mX=" + mX + ", mY=" + mY + ", mR=" + mR
+				+ ", mDr=" + mDr + ", mImage=" + mImage + "]";
+	}
+
+	
 }
